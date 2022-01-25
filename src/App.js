@@ -9,11 +9,68 @@ import Quiz from './components/Quiz.js';
 // import { Routes, Route, Link} from 'react-router-dom';
 import './styles/sass/App.scss';
 
-
+// firebase import 
+import firebase from './firebase.js';
+import { getDatabase, ref, push, onValue } from 'firebase/database';
   
 
 function App() {
+  // firebase data - for userObj
+  const [userObj, setUserObj] = useState({});
+  const [newUserObj, setnewUserObj] = useState([]);
 
+  // button to activate it
+  // const [scoreButton, setScoreButton] = useState(false);
+
+  useEffect(() => {
+    const database = getDatabase(firebase);
+    // reference database
+    const dbRef = ref(database);
+
+    // add an event listener to call data 'response'
+    onValue(dbRef, (response) => {
+      // storing new state
+      const newState = [];
+      // storing in variable
+      const data = response.val();
+
+      // for in loop to access data property
+      for (let player in data) {
+        newState.push(data[player]);
+      }
+      // then setState
+      setUserObj(newState);
+    });
+  }, []);
+
+  // firebase handler
+  const scoreButtonHandler = () => {
+    setnewUserObj(  
+    [{ playerD: "Imitiaz", score: 32 },
+    { playerE: "Joey", score: 62 },
+    { playerF: "Laura", score: 80 },]
+    );
+  };  
+
+  // useEffect to push
+  useEffect(() => {
+    const database = getDatabase(firebase);
+    // reference database
+    const dbRef = ref(database);
+
+    push(dbRef, newUserObj); 
+  }, [newUserObj])
+
+  // set - updating data 
+  // note use a setting function
+
+  // pseudocode for firebase scoreboard
+  // 1. get the player objects from database
+  // turn player objects into array and push up 
+
+
+
+  // quiz variables
   const difficultyArr = ["easy", "medium", "hard"];
   // api call for category
   const [categoryArr, setCategoryArr] = useState([]);
@@ -43,6 +100,8 @@ function App() {
     event.preventDefault();
     setSubmitButton(!submitButton);
   };
+
+
 
   const randomizer = () => { 
     return Math.floor(Math.random() * 4); 
@@ -134,6 +193,7 @@ function App() {
 
       <PlayerNames />
       <Quiz quizQuestions={quizQuestions} />
+      <button onClick={scoreButtonHandler}>Get scoreboard</button>
     </div>
   );
 }
