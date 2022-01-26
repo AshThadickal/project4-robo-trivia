@@ -53,8 +53,8 @@ const UserScores = (props) => {
     push(dbRef, newUserObj);
   }, [newUserObj]);
 
-  return(
-    <>
+  return (props.trigger) ? (
+    <div className="popup">
     <h1>Userscores</h1>
     <p>Your Score is: {props.currentScore}</p>
     {
@@ -71,8 +71,8 @@ const UserScores = (props) => {
     }
       <Link to='/'>Click here play again</Link>
     
-    </>
-  )
+    </div>
+  ) : '';
 };
 
 export default UserScores;
