@@ -61,7 +61,7 @@ const Quiz = (props) => {
             <p>{currentScore}</p>
           </>
         ) : null}
-        {scoreboard ? <UserScores /> : null}
+        {scoreboard ? <UserScores currentScore={currentScore}/> : null}
       </div>
     );
 }
