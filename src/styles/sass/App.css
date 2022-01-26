@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Mukta:wght@300&family=Orbitron&family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@300&family=Orbitron&family=Press+Start+2P&display=swap");
 html {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
@@ -290,6 +291,60 @@ h1, h2 {
 
 label, button, select, p {
   font-family: "Mukta", sans-serif;
+}
+
+form {
+  margin: 20px;
+}
+
+.correctAnswer:active {
+  border: 2px solid green;
+}
+
+.incorrectAnswer:active {
+  border: 2px solid red;
+}
+
+body {
+  display: flex;
+  text-align: center;
+  background-color: #023a02;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  margin: 10px;
+}
+
+select {
+  text-align: center;
+  margin: 10px;
+  background-color: darkgrey;
+  border-style: none;
+}
+
+button {
+  margin: 20px;
+  width: 200px;
+  height: 50px;
+  background-color: darkgrey;
+  border-style: none;
+}
+
+h1, h2 {
+  font-family: "Orbitron", sans-serif;
+  color: white;
+}
+
+label, button, select, p {
+  font-family: "Mukta", sans-serif;
+  color: white;
 }
 
 form {
