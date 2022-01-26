@@ -1,10 +1,13 @@
 import { useState } from "react";
-
+// import scoreboard
+import UserScores from "./UserScores.js";
 
 const Quiz = (props) => {
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentScore, setCurrentScore] = useState(0);
+  // useState to show score
+  const [scoreboard, setScoreboard] = useState(false);
   // let currentPlayerScore = 0; 
   // const [ isCorrect, setIsCorrect ] = useState(false);
   
@@ -24,39 +27,41 @@ const Quiz = (props) => {
       setCurrentQuestion(currentQuestion + 1)
 
     } else {
-      alert("end of quiz");
+      setScoreboard(true);
+      // alert("end of quiz");
     }
     
     // console.log(currentQuestion);
   }
 
+
     return (
       <div>
-        {props.quizQuestions.length !== 0  ?
+        {props.quizQuestions.length !== 0 ? (
           <>
             <h2>quiz here</h2>
-            
+
             <p>Question: {props.quizQuestions[currentQuestion].question}</p>
-            {
-              props.quizQuestions[currentQuestion].answerButtons.map((answerItem, index)=>{
-                return(
+            {props.quizQuestions[currentQuestion].answerButtons.map(
+              (answerItem, index) => {
+                return (
                   <button
                     value={answerItem.name}
                     onClick={handleAnswerClick}
                     key={index}
-                    className={answerItem.isCorrect ? "correctAnswer" : "incorrectAnswer" }
+                    className={
+                      answerItem.isCorrect ? "correctAnswer" : "incorrectAnswer"
+                    }
                   >
                     {answerItem.name}
                   </button>
-                )
-              })
-            }
+                );
+              }
+            )}
             <p>{currentScore}</p>
-           
-            
           </>
-        :
-        null}
+        ) : null}
+        {scoreboard ? <UserScores /> : null}
       </div>
     );
 }

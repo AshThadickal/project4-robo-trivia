@@ -3,70 +3,14 @@ import LandingPage from './components/LandingPage';
 import UserSelectionForm from './components/UserSelectionForm';
 import './styles/sass/App.scss';
 
-import { useState, useEffect } from 'react';
-// firebase import 
-import firebase from './firebase.js';
-import { getDatabase, ref, push, onValue } from 'firebase/database';
 
-  
-
-function App() {
-
-  // firebase data - for userObj
-  const [userObj, setUserObj] = useState({});
-  const [newUserObj, setnewUserObj] = useState([]);
-
-  // button to activate it
-  // const [scoreButton, setScoreButton] = useState(false);
-
-  useEffect(() => {
-    const database = getDatabase(firebase);
-    // reference database
-    const dbRef = ref(database);
-
-    // add an event listener to call data 'response'
-    onValue(dbRef, (response) => {
-      // storing new state
-      const newState = [];
-      // storing in variable
-      const data = response.val();
-
-      // for in loop to access data property
-      for (let player in data) {
-        newState.push(data[player]);
-      }
-      // then setState
-      setUserObj(newState);
-    });
-  }, []);
-
-  // firebase handler
-  const scoreButtonHandler = () => {
-    setnewUserObj(
-      [
-        { playerName: "Imitiaz", score: 99, avatar: "avatarUrl" },
-        { playerName: "Joey", score: 62, avatar: "avatarUrl" },
-        { playerName: "Laura", score: 80, avatar: "avatarUrl" },
-      ]
-    );
-  };
-
-  // useEffect to push
-  useEffect(() => {
-    const database = getDatabase(firebase);
-    // reference database
-    const dbRef = ref(database);
-
-    push(dbRef, newUserObj);
-  }, [newUserObj])
-  
+function App() {  
 
   return (
     <div>
       <header>
         <h1>RoboTrivia</h1>
       </header>
-      <button onClick={scoreButtonHandler}>Get scoreboard</button>
       {/* <UserSelectionForm
         submitHandler={submitHandler}
         handleCategoryChoice={handleCategoryChoice}
