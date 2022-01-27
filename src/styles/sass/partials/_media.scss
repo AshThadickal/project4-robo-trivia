@@ -1,0 +1,29 @@
+@media (max-width: 768px) {
+    fieldset {
+        flex-direction: column;
+    }
+
+    .playerInfoCard {
+        flex-direction: column;
+        form {
+            width: 100%;
+        }
+        .avatarContainer {
+            width: 100%;
+            .avatarImageContainer {
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+
+    .quizContainer {
+        flex-direction: column;
+        .currentQuestion {
+            width: 100%;
+        }
+        .answerContainer {
+            width: 100%;
+        }
+    }
+}

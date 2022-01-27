@@ -60,6 +60,9 @@
   padding: 10%;
   width: 50%;
   background-color: #d1cde4;
+  li {
+      list-style: none;
+  }
 }
 
 .popupInner .closeButton {
