@@ -1,12 +1,11 @@
-
 .quizTitleContainer {
     display: flex;
     justify-content: space-between;
     p {
         font-size: 1.5rem;
-            span {
-                text-align: center;
-            }
+        span {
+            text-align: center;
+        }
     }
     span {
         display: block;
@@ -16,21 +15,22 @@
 .quizContainer {
     display: flex;
     padding-bottom: 50px;
-        p {
-            width: 40%;
-            padding-right: 40px;
-            align-self: center;
-            font-size: 1.5rem;
-        }
+    p {
+        width: 40%;
+        padding-right: 40px;
+        align-self: center;
+        font-size: 1.5rem;
+    }
 }
 
 .answerContainer {
     display: flex;
     flex-direction: column;
     width: 60%;
+    button {
+        font-family: "Electrolize", sans-serif;
+    }
 }
-
-
 
 .correctAnswer:active {
     // border: 2px solid green;
@@ -44,29 +44,29 @@
 
 /* Pupup Styling */
 .popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .popupInner {
-  position: relative;
-  padding: 10%;
-  width: 50%;
-  background-color: #d1cde4;
-  li {
-      list-style: none;
-  }
+    position: relative;
+    padding: 10%;
+    width: 50%;
+    background-color: #d1cde4;
+    li {
+        list-style: none;
+    }
 }
 
 .popupInner .closeButton {
-  position: absolute;
-  top: 16px;
-  right: 16px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
 }
